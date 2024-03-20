@@ -1,4 +1,5 @@
 import datetime
+import sqlite3
 import json
 # FIGURE OUT A WAY TO WEBSCRAPE TO GET DEFINITIONS FROM THE WEB
 # word : {word, definition, [synonyms], [antonyms]}
@@ -36,7 +37,9 @@ def main():
     else :
         with open(settings["dataFile"], 'r') as json_file:
             data = json.load(json_file)
-
+    dict = sqlite3.connect('myDict.db')
+    cursor = dict.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS words(word TEXT PRIMARY KEY, defintion TEXT, synonyms TEXT, antonyms TEXT)")
     while(1):
         newWord = Word("","")
         returnType = promptInput(newWord, data) #returnType = 0 means repeat prompt, returnType = 1 means outputted word/added new word to dict/altered word
@@ -44,8 +47,19 @@ def main():
         elif(returnType == 1) :  
             print(f"{newWord.word}, {newWord.definition}, {newWord.synonyms} , {newWord.antonyms}")
             data[newWord.word] = [newWord.word, newWord.definition, newWord.synonyms, newWord.antonyms]
+            
             with open(settings["dataFile"], 'w') as json_file:
                 json.dump(data, json_file, indent = 4)
+            insertWord = newWord.word
+            insertDef = newWord.definition
+            insertSyn = str(newWord.synonyms)
+            insertAnt = str(newWord.antonyms)
+            cursor.execute("INSERT INTO words(word, defintion, synonyms, antonyms) VALUES (?, ?, ?, ?)", (insertWord, insertDef, insertSyn, insertAnt))
+            dict.commit()
+            cursor.execute("SELECT * FROM words")
+            row = cursor.fetchone()
+            print(row)
+            dict.close()
             print(f"""Options
                 [1] : Input a new word
                 [Any other input] : Exit program

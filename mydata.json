@@ -4,5 +4,17 @@
         "A delicious fruit!",
         [],
         []
+    ],
+    "Banana": [
+        "Banana",
+        "A fruit that is not an apple",
+        [],
+        []
+    ],
+    "Orange": [
+        "Orange",
+        "A fruit that is neither an apple nor an orange",
+        [],
+        []
     ]
 }
