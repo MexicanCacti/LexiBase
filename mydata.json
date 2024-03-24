@@ -16,5 +16,41 @@
         "A fruit that is neither an apple nor an orange",
         [],
         []
+    ],
+    "yawn": [
+        "yawn",
+        "to open wide gape",
+        [],
+        []
+    ],
+    "Yawn": [
+        "Yawn",
+        "",
+        [],
+        []
+    ],
+    "Snake": [
+        "Snake",
+        "",
+        [],
+        []
+    ],
+    "Shoe": [
+        "Shoe",
+        "",
+        [],
+        []
+    ],
+    "Lace": [
+        "Lace",
+        "To draw together the edges of by or as if by a lace passed through eyelets",
+        [],
+        []
+    ],
+    "Money": [
+        "Money",
+        "Something generally accepted as a medium of exchange, a measure of value, or a means of paymentsuch as",
+        [],
+        []
     ]
 }

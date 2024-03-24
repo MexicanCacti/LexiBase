@@ -1,8 +1,12 @@
+from urllib.request import urlopen
 import datetime
 import sqlite3
 import json
+import re
 # FIGURE OUT A WAY TO WEBSCRAPE TO GET DEFINITIONS FROM THE WEB
 # word : {word, definition, [synonyms], [antonyms]}
+# webscraper.... https://www.merriam-webster.com/dictionary/apple
+# ...https://www.merriam-webster.com/thesaurus/apple
 __name__ == '__main__'
 
 class Word:
@@ -11,6 +15,13 @@ class Word:
         self.definition = definition
         self.synonyms = []
         self.antonyms = []
+    
+def modWord(obj, word, definition, syn, ant):
+    obj.word = word
+    obj.definition = definition
+    obj.synonyms = syn
+    obj.antonyms = ant
+
 
 
 
@@ -88,13 +99,14 @@ def promptInput(newWord, data):
     choice = -1
     while(1):
         word = input("Input word to search: ")
+        word = word.capitalize()
         newWord.word = word
         if not (word in data):
-            print("That word is not in my dictionary!")
+            print("That word is not in the dictionary!")
             while(not choice == 1 or not choice == 2):
                 print(f"""Options
-                    [1] : Create a new definition for {word}
-                    [2] : Search for a different word
+                    [1] : Search for a different word
+                    [2] : Create a new definition for {word}
                     [-1] : Exit Program
                     """)
                 
@@ -107,16 +119,16 @@ def promptInput(newWord, data):
                 else :
                     choice = int(choice)
 
-                if(choice == 1) :
+                if(choice == 1) : return 0
+                elif(choice == 2) : 
                     createDefinition(newWord)
                     return 1
-                elif(choice == 2) : return 0
                 elif(choice == -1) : return -1
                 else :
                     print("Invalid choice. Repeating options.\n")
             return 1
         else :
-            print("That word is in my dictionary!\nWhat would you like me to do?")
+            print("That word is in the dictionary!\nWhat would you like to do?")
             while(1):
                 print(f"""Options
                     [1] : Output definition for {word}
@@ -176,11 +188,13 @@ def createDefinition(newWord):
         else :
             choice = int(choice)
 
-        if(choice == 1): continue
-            ## find online
+        if(choice == 1):
+            findOnline(newWord)
+            print(newWord.definition)
+            return
         elif(choice == 2):
             while(1) :
-                newWord.definition = input(f"Input a string for the definiton for {newWord.word}: ")
+                newWord.definition = input(f"Input a string for the definition for {newWord.word}: ")
                 print(f"Does \"{newWord.definition}\" look right?")
                 print(f"""Options
                     [1] : Yes
@@ -202,14 +216,31 @@ def createDefinition(newWord):
             break
         else :
             print("Invalid choice. Repeating options.\n")
-    findOnline(newWord)
-    
+        return
+
 
 def findOnline(newWord) :
     print("Searching online")
-    # if definition already exists, make sure to save before 
-    # if syn/ant already exist, give option to keep
-    # otherwise webscrape from list of websiteToSearch.json
+    dictUrl = "https://www.merriam-webster.com/dictionary/" + newWord.word
+    thesUrl = "https://www.merriam-webster.com/thesaurus/" + newWord.word
+    dictPattern = "<span class=\"dtText\".*?.</span>"
+    thesPattern = ""
+
+    # find Def
+    page = urlopen(dictUrl)
+    html = page.read().decode("utf-8")
+    reString = re.findall(dictPattern, html, re.IGNORECASE)
+    definitions = reString
+    for i in range(len(definitions)) :
+        definitions[i] = re.sub("<.*?>", "", definitions[i])
+        definitions[i] = re.sub(": ", "", definitions[i])
+        definitions[i] = definitions[i][0].upper() + definitions[i][1:]   
+
+    #### Add option to check if definition exists... handle if it doesnt
+    ### Add option to check if user wants only the first definition OR wants to choose from the list
+
+    modWord(newWord, newWord.word, definitions[0], newWord.synonyms, newWord.antonyms)
+    return
 
 
 
