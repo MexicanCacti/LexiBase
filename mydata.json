@@ -52,5 +52,23 @@
         "Something generally accepted as a medium of exchange, a measure of value, or a means of paymentsuch as",
         [],
         []
+    ],
+    "Cat": [
+        "Cat",
+        "A carnivorous mammal (Felis catus) long domesticated as a pet and for catching rats and mice",
+        [],
+        []
+    ],
+    "Lake": [
+        "Lake",
+        "",
+        [],
+        []
+    ],
+    "Ocean": [
+        "Ocean",
+        ": one of the large bodies of water into which the ocean is divided",
+        [],
+        []
     ]
 }

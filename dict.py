@@ -3,6 +3,7 @@ import datetime
 import sqlite3
 import json
 import re
+from bs4 import BeautifulSoup
 # FIGURE OUT A WAY TO WEBSCRAPE TO GET DEFINITIONS FROM THE WEB
 # word : {word, definition, [synonyms], [antonyms]}
 # webscraper.... https://www.merriam-webster.com/dictionary/apple
@@ -229,17 +230,44 @@ def findOnline(newWord) :
     # find Def
     page = urlopen(dictUrl)
     html = page.read().decode("utf-8")
-    reString = re.findall(dictPattern, html, re.IGNORECASE)
-    definitions = reString
-    for i in range(len(definitions)) :
-        definitions[i] = re.sub("<.*?>", "", definitions[i])
-        definitions[i] = re.sub(": ", "", definitions[i])
-        definitions[i] = definitions[i][0].upper() + definitions[i][1:]   
+    soup = BeautifulSoup(html, 'html.parser')
+    
+    definition_soup = soup.find_all('span', class_='dtText')
+    
+    definitions = []
+    for definition in definition_soup:
+        define = definition.get_text()
+        definitions.append(define)
+    
+    print(f"Here are the definitions I found for {newWord}:\n")
+    i = 0
+    for definition in definitions:
+        print(f"{i}) {definition}\n")
+        i += 1
+    
+    print(f"Select using the corresponding number inputs: ")
+    while(True):
+        try:
+            choice = input()
+            choice = int(choice) 
+            if(int(choice) < 0 or int(choice) >= len(definitions)):
+                print(f"Select a number between 0 and {len(definitions) - 1}: ")
+            else:
+                break
+        except ValueError:
+            print("Select a number between 0 and {len(definitions) - 1}: ")
+    
+    #reString = re.findall(dictPattern, html, re.IGNORECASE)
+    #definitions = reString
+    #for i in range(len(definitions)) :
+    #    definitions[i] = re.sub("<.*?>", "", definitions[i])
+    #    definitions[i] = re.sub(": ", "", definitions[i])
+    #    definitions[i] = definitions[i][0].upper() + definitions[i][1:]   
 
     #### Add option to check if definition exists... handle if it doesnt
     ### Add option to check if user wants only the first definition OR wants to choose from the list
 
-    modWord(newWord, newWord.word, definitions[0], newWord.synonyms, newWord.antonyms)
+    modWord(newWord, newWord.word, definitions[choice], newWord.synonyms, newWord.antonyms)
     return
 
 
