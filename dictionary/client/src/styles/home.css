@@ -1,0 +1,65 @@
+.container{
+    display:grid;
+    grid-template-areas:
+    "hd"
+    "ct";
+    grid-template-rows: 10vh auto;
+    height:100vh;
+}
+
+.header{
+    grid-area:hd;
+    position:relative;
+    height:100%;
+}
+
+.card{
+    grid-area:ct;
+    display:grid;
+    grid-template-areas:
+    "nd rd ad";
+    grid-template-columns: 1fr 1fr 1fr;
+    border:solid;
+    border-color:white;
+    background:transparent;
+    height:100%;
+    position:relative;
+    
+}
+
+.home-button{
+    border:solid;
+    border-color:white;
+    background:black;
+    color:white;
+    height:100%;
+    width:100%;
+    box-sizing: border-box;
+    transition-duration: 0.6s;
+}
+
+.home-button:hover{
+    height: 90%;
+    width: 90%;
+    border-color:transparent;
+    box-shadow: 0 0 20px red;
+}
+
+#new-dict, #review-dict, #add-to-dict{
+    display: flex;
+    justify-content: center; /* Center button horizontally */
+    align-items: center; /* Center button vertically */
+    box-sizing: border-box;
+}
+
+#new-dict{
+    grid-area:nd;
+}
+
+#review-dict{
+    grid-area:rd;
+}
+
+#add-to-dict{
+    grid-area:ad;
+}
