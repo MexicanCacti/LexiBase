@@ -1,3 +1,1 @@
-Using Python, this console-based program gives you text-based prompts to search up and add words to a dictionary.
-Eventually, this program will web scrape to obtain definitions, synonyms, and antonyms for the words that the user puts in.
-Additionally, a feature will be added to read a file of words and automatically search and add them to the user's dictionary
+Using React as a front-end, this web app will allow the user to create multiple dictionaries containing various words' definitions, synonyms, and antonyms. Eventually, the user will be able to create flashcard to quiz themselves on the defintions.
