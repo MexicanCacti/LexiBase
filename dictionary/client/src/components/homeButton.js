@@ -3,7 +3,7 @@ import React from 'react'
 function Button({ text, onClick}){
     return(
         <button onClick={onClick} className={"home-button"}>
-            {text}
+            <div id='button-text'>{text}</div>
         </button>
     );
 }

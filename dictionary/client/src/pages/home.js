@@ -1,11 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Button from '../components/homeButton';
 import '../styles/home.css';
 
 function Home(){
-    const homeClick = () => {
-        alert('Home button clicked');
-      }
+    const navigate = useNavigate();
+    const homeClick = (page) => {
+        if(page === 'create'){
+            navigate('/create');
+        }
+        else if(page ==='review'){
+            navigate('/review');
+        }
+        else if(page === 'add'){
+            navigate('/add');
+        }
+        else{
+            alert('No page added');
+        }
+      };
 
     return(
         <div className="container">
@@ -21,15 +34,15 @@ function Home(){
 
             <div className="card">
                 <div id="new-dict" >
-                    <Button text="Option to create new dict" onClick={homeClick}/>
+                    <Button text="Option to create new dict" onClick={() => homeClick('create')}/>
                 </div>
 
                 <div id="review-dict">
-                    <Button text="Option to review selected dict" onClick={homeClick}/>
+                    <Button text="Option to review selected dict" onClick={() => homeClick('review')}/>
                 </div>
 
                 <div id="add-to-dict">
-                    <Button text="Option to add to selected dict" onClick={homeClick}/>
+                    <Button text="Option to add to selected dict" onClick={() => homeClick('add')}/>
                 </div>
 
 

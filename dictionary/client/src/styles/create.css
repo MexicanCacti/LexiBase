@@ -1,0 +1,22 @@
+.container{
+    display:grid;
+    grid-template-areas:
+    "hd"
+    "ct";
+    grid-template-rows: 10vh auto;
+    height:100vh;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.header{
+    grid-area:hd;
+    position:relative;
+    height:100%;
+    color:grey;
+}
+
+.content{
+    grid-area:ct;
+    position:relative;
+    height:100%;
+}
