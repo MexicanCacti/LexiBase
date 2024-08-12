@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 
 function CreateDatabaseForm({create}){
     const [dbName, setDbName] = useState("");
-    const [port, setPort] = useState(3001);
+    const [port, setPort] = useState("");
 
     // fetch port number backend is running on
     useEffect(() => {
@@ -29,8 +29,8 @@ function CreateDatabaseForm({create}){
         e.preventDefault(); // Prevent default form submit
         if(dbName){
             try{
-                const response = await axios.post(`http://localhost:${port}/create-database`, {dbName});
-                console.log('Database created: ', response.data);
+                await create(dbName);
+                console.log('SuccessFul Submit :)');
             }
             catch (error){
                 console.error('Error creating database: ', error.message);

@@ -2,11 +2,14 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
+
 
 (async () => {
     const {default : getPort } = await import('get-port');
     const app = express();
-    const port = await getPort({port:3001});
+    app.use(cors());
+    const port = await getPort({port:3002});
 
     // parse JSON requests
     app.use(express.json());

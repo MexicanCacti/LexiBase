@@ -7,7 +7,7 @@ import CreateDatabaseForm from '../components/createDatabaseForm';
 function Create(){
     const handleCreateDatabase = async (dbName) => {
         try{
-            const response = await fetch('/api/create-dabase', {
+            const response = await fetch('/create-database', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
