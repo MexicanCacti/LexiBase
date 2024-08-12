@@ -27,3 +27,5 @@ yarn-error.log*
 /server/node_modules
 
 ../OldStuff
+
+#"proxy": "http://localhost:3002"
