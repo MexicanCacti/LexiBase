@@ -26,6 +26,8 @@ yarn-error.log*
 /client/node_modules
 /server/node_modules
 
+# My Old Files
 ../OldStuff
 
-#"proxy": "http://localhost:3002"
+# Ignore databases
+/databases
