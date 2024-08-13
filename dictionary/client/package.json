@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start:frontend": "react-scripts start",
-    "start:backend": "node ../server/database.js",
+    "start:backend": "node ../server/entry.js",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
