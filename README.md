@@ -1,1 +1,1 @@
-Using React as a front-end, this web app will allow the user to create multiple dictionaries containing various words' definitions, synonyms, and antonyms. Eventually, the user will be able to create flashcard to quiz themselves on the defintions.
+Using React as a front-end, this web app will allow the user to create multiple dictionaries containing various words' definitions, synonyms, and antonyms. Eventually, the user will be able to create flashcards to quiz themselves on the defintions.
