@@ -24,12 +24,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 1. Navigate to the `client` subfolder:
    cd dictionary/client
 
-2. Install the dependencies
+2. Install the dependencies:
   npm install
 
 ### Setting up the Server
 1. Navigate to the `server` subfolder:
   cd dictionary/server
 
-2. Install the dependencies
+2. Install the dependencies:
   npm install
