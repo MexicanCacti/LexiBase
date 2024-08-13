@@ -28,7 +28,7 @@ It correctly bundles React in production mode and optimizes the build for the be
   npm install
 
 ### Setting up the Server
-1. Navigate to the 'server' subfolder:
+1. Navigate to the `server` subfolder:
   cd dictionary/server
 
 2. Install the dependencies
