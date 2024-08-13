@@ -1,6 +1,9 @@
 import React from 'react';
+import {useState} from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Button from '../components/homeButton';
+import ListDatabasesMenu from '../components/listDatabases';
+import '../styles/global.css';
 import '../styles/home.css';
 
 function Home(){
@@ -20,21 +23,17 @@ function Home(){
         }
       };
 
+      const [selectedDb, setSelectedDb] = useState("");
+
     return(
         <div className="container">
             <div className="header">
-                <p>Dict Select: 
-                <select>
-                <option value="test1">test1</option>
-                <option value="test2">test2</option>
-                <option value="test3">test3</option>
-                </select>
-                </p>
+                <ListDatabasesMenu onSelectDb={setSelectedDb} />
             </div>
 
             <div className="card">
                 <div id="new-dict" >
-                    <Button text="Option to create new dict" onClick={() => homeClick('create')}/>
+                    <Button text="Create or Delete a Dictionary" onClick={() => homeClick('create')}/>
                 </div>
 
                 <div id="review-dict">
