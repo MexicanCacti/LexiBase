@@ -5,7 +5,7 @@ import '../styles/global.css';
 import '../styles/review.css';
 
 
-function Review(){
+function Review({selectedDb, setSelectedDb}){
     return(
         <div className="container">
             <div className="header">

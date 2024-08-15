@@ -30,4 +30,7 @@ yarn-error.log*
 ../OldStuff
 
 # Ignore databases
-/databases
+.sqlite
+
+# Ignore API keys
+.env

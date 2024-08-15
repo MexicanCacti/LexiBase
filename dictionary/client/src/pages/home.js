@@ -1,13 +1,10 @@
 import React from 'react';
-import {useState} from 'react';
 import NavigateButton from '../components/navigateButton';
 import ListDatabasesMenu from '../components/listDatabases';
 import '../styles/global.css';
 import '../styles/home.css';
 
-function Home(){
-
-      const [selectedDb, setSelectedDb] = useState("");
+function Home({selectedDb, setSelectedDb}){
 
     return(
         <div className="container">

@@ -42,6 +42,23 @@ router.post('/delete-database', async (req, res) => {
 
 })
 
+router.post('/add-word', async (req, res) => {
+    const { dbName } = req.query;
+    const {word} = req.query;
+    const {info} = req.query;
+
+    if(!dbName) {
+        return res.status(400).json({ message: 'Database name is required' });
+    }
+
+    try{
+        addWord(dbName, word, info);
+    }
+    catch(error){
+        res.status(500).json({message: err.message});
+    }
+})
+
 router.get('/get-words', async (req, res) => {
     const { dbName } = req.query;
 

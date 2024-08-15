@@ -90,6 +90,21 @@ async function deleteDatabase(dbName){
     });
 }
 
+async function addWord(dbName, word, info){
+    const dbPath = path.join(__dirname, '..', '..', 'databases', `${dbName}.sqlite`);
+    
+    if(!fs.existsSync(dbPath)){
+        throw new Error('Database not found');
+    }
+
+    return new Promise((resolve, reject) => {
+        const db = new sqlite3.Database(dbPath);
+        console.log('Added Word to DB');
+
+        db.close();
+    });
+}
+
 async function retrieveWords(dbName) {
     const dbPath = path.join(__dirname, '..', '..', 'databases', `${dbName}.sqlite`);
 
@@ -128,4 +143,4 @@ async function listDatabases() {
     });
 }
 
-module.exports = { createDatabase, retrieveWords, listDatabases, deleteDatabase};
+module.exports = { createDatabase, addWord, retrieveWords, listDatabases, deleteDatabase};

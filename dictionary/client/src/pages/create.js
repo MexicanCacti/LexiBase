@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 
 import NavigateButton from '../components/navigateButton';
 import CreateDatabaseForm from '../components/createDatabaseForm';
@@ -8,10 +7,7 @@ import { deleteDatabase } from '../components/backRequests';
 import '../styles/global.css';
 import '../styles/create.css';
 
-function Create(){
-    const [selectedDb, setSelectedDb] = useState("");
-
-
+function Create({selectedDb, setSelectedDb}){
     const handleDeleteSubmit = async (e) => {
         e.preventDefault();
         console.log(`${selectedDb}`);
