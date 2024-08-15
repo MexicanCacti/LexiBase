@@ -1,14 +1,17 @@
-
 import React from 'react';
 
-import '../styles/review.css'
+import NavigateButton from '../components/navigateButton';
+import '../styles/global.css';
+import '../styles/review.css';
 
 
 function Review(){
     return(
         <div className="container">
             <div className="header">
-
+                <NavigateButton page="home" text="Home" className="header-button"/>
+                <NavigateButton page="create" text="Create" className="header-button"/>
+                <NavigateButton page="add" text="Add" className="header-button"/>
             </div>
 
             <div className="content">

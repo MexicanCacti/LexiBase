@@ -16,4 +16,25 @@
 
 .content{
     grid-area:ct;
+    background:white;
+}
+
+.header-button{
+    justify-content: center; /* Center button text horizontally */
+    align-items: center; /* Center button text vertically */
+    border:solid;
+    border-color:white;
+    background:black;
+    color:white;
+    height:100%;
+    width:100%;
+    box-sizing: border-box;
+    transition-duration: 0.6s; 
+}
+
+.header-button:hover{
+    height: 90%;
+    width: 90%;
+    border-color:transparent;
+    box-shadow: 0 0 20px red;
 }

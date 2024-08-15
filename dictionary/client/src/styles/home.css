@@ -32,9 +32,8 @@
     width:100%;
     box-sizing: border-box;
     transition-duration: 0.6s;
-}
-
-.home-button #button-text{
+    justify-content: center; /* Center button text horizontally */
+    align-items: center; /* Center button text vertically */
 }
 
 .home-button:hover{
@@ -42,13 +41,6 @@
     width: 90%;
     border-color:transparent;
     box-shadow: 0 0 20px red;
-}
-
-#new-dict, #review-dict, #add-to-dict{
-    display: flex;
-    justify-content: center; /* Center button horizontally */
-    align-items: center; /* Center button vertically */
-    box-sizing: border-box;
 }
 
 #new-dict{

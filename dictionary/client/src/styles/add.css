@@ -1,19 +1,26 @@
-.container{
-
+.header{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;;
 }
 
-.header{
-
+.content{
+    display:grid;
+    grid-template-areas:
+    "tw"
+    "re"
+    "lw";
+    grid-template-rows: 10vh 30vh 50vh;
 }
 
 .type-word{
-
+    grid-area:tw;
 }
 
 .results{
-
+    grid-area:re;
 }
 
 .list-words{
-    
+    grid-area:lw;
 }

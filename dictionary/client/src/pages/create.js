@@ -1,10 +1,12 @@
 import React from 'react';
 import {useState} from 'react';
-import '../styles/global.css';
-import '../styles/create.css';
+
+import NavigateButton from '../components/navigateButton';
 import CreateDatabaseForm from '../components/createDatabaseForm';
 import ListDatabasesMenu from '../components/listDatabases';
 import { deleteDatabase } from '../components/backRequests';
+import '../styles/global.css';
+import '../styles/create.css';
 
 function Create(){
     const [selectedDb, setSelectedDb] = useState("");
@@ -31,7 +33,9 @@ function Create(){
     return(
         <div className="container">
             <div className="header">
-                <h1>Buttons to go to home, add, review go here</h1>
+                <NavigateButton page="home" text="Home" className="header-button"/>
+                <NavigateButton page="add" text="Add" className="header-button"/>
+                <NavigateButton page="review" text="Review" className="header-button"/>
             </div>
 
             <div className="content">
