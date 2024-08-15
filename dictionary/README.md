@@ -21,8 +21,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ### Setting Up the Client
 
-### Setting Up the Client
-
 1. Navigate to the `client` subfolder:
    ```bash
    cd dictionary/client
@@ -39,3 +37,18 @@ It correctly bundles React in production mode and optimizes the build for the be
 2. Install the dependencies:
    ```bash
    npm install
+
+### Setting up the API
+1. Navigate to the `client` subfolder:
+   ```bash
+   cd dictionary/client
+   
+2. Create File:
+   ```bash
+   touch .env
+
+3. In the file add:\
+REACT_APP_WORDS_API_KEY={Put WordsAPI key in here}\
+NOTE: Without the brackets!\
+Sign up for free here: https://www.wordsapi.com/#try\
+
